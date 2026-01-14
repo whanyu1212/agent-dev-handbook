@@ -1,5 +1,5 @@
 def main():
-    print("Hello from eval-driven-dev-handbook!")
+    print("Hello from agent-dev-handbook!")
 
 
 if __name__ == "__main__":
