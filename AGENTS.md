@@ -14,6 +14,15 @@ This file provides guidance to agents when working with code in this repository.
 - **Type Check**: `mypy --ignore-missing-imports --no-strict-optional src/`.
 - **Run Examples**: Execute directly with python, e.g., `python src/agent_dev_handbook/adk/examples/run_dummy_agent.py`.
 
+# Linting Rules (IMPORTANT for code generation)
+**Ruff config** (`select = ["E", "F", "I"]`):
+- **Line length**: 88 chars max (E501) - split long strings, extract variables
+- **Unused imports** (F401): Remove them
+- **Unused variables** (F841): Remove or prefix with `_`
+- **Import order** (I001): stdlib → third-party → local, alphabetized
+
+**Mypy**: Uses `--ignore-missing-imports --no-strict-optional` (lenient for examples)
+
 # ADK Examples (src/agent_dev_handbook/adk/examples/)
 - **`dummy_agent.py`** - DummyAgent for deterministic logic without LLM calls (validation, routing, preprocessing).
 - **`custom_agent.py`** - ConditionalStoryAgent showing custom orchestration with conditional logic.

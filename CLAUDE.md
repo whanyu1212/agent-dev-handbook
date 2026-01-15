@@ -172,11 +172,37 @@ for event in events:
 
 ## Code Style
 
-- Line length: 88 characters (Black-compatible)
+- Line length: **88 characters** (Black-compatible) - enforced by ruff
 - Python version: 3.12+
-- Linting: Ruff with flake8 (E/F) and isort (I) rules
-- Type hints: Use mypy for type checking (with lenient settings for examples)
 - Imports: Sorted automatically by ruff/isort
+
+### Ruff Rules (select = ["E", "F", "I"])
+
+**E (pycodestyle errors):**
+- `E501`: Line too long (max 88 chars) - split strings or extract variables
+- `E101`-`E131`: Indentation errors
+- `E2xx`: Whitespace errors
+- `E7xx`: Statement errors (multiple statements on one line, etc.)
+- `E9xx`: Runtime errors (syntax, IO)
+
+**F (pyflakes):**
+- `F401`: Unused imports - remove them
+- `F841`: Unused variables - remove or prefix with `_`
+- `F811`: Redefinition of unused name
+- `F821`: Undefined name
+- `F823`: Local variable referenced before assignment
+
+**I (isort):**
+- `I001`: Import order - stdlib → third-party → local, alphabetized within groups
+
+### Mypy Settings
+
+Type checking uses lenient settings for educational examples:
+```bash
+mypy --ignore-missing-imports --no-strict-optional src/
+```
+- `--ignore-missing-imports`: Skip errors for untyped third-party packages
+- `--no-strict-optional`: Allow implicit `None` in Optional types
 
 ## Educational Notes
 
